@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.SplitPane?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="main" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="agh.ics.oop.presenter.SimulationPresenter">
+    <top>
+        <VBox alignment="CENTER">
+            <HBox alignment="CENTER" spacing="10">
+                <Label fx:id="simulationID" text="Simulation" style="-fx-font-size: 20px;"/>
+                <Label fx:id="dayLabel" text="day" style="-fx-font-size: 20px;"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <SplitPane fx:id="mainSplitPane" BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <VBox fx:id="plotField">
+                        <Label fx:id="info" text="General Statistics" style="-fx-font-size: 25px; -fx-font-weight: bold"/>
+                        <Label fx:id="mapStats" text="data" style="-fx-font-size: 20px;"/>
+                        <Label fx:id="graph" text="Graph" style="-fx-font-size: 25px; -fx-font-weight: bold"/>
+                    </VBox>
+
+                </AnchorPane>
+                <VBox alignment="CENTER">
+                    <HBox alignment="CENTER">
+                        <GridPane fx:id="mapGrid" gridLinesVisible="true"/>
+                    </HBox>
+                </VBox>
+                <AnchorPane fx:id="rightSide" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <VBox fx:id="legend" style="-fx-padding: 10px">
+                        <children>
+                            <Label fx:id="data1" text="Legend" style="-fx-font-size: 25px; -fx-font-weight: bold"/>
+                            <HBox>
+                                <ImageView>
+                                    <fitWidth>30.0</fitWidth>
+                                    <fitHeight>30.0</fitHeight>
+                                    <Image url="@/images/paw.png"/>
+                                </ImageView>
+                                <Label text=" -  Animal" style="-fx-font-size: 20px;"/>
+                            </HBox>
+                            <HBox>
+                                <ImageView>
+                                    <fitWidth>30.0</fitWidth>
+                                    <fitHeight>30.0</fitHeight>
+                                    <Image url="@/images/grass.png"/>
+                                </ImageView>
+                                <Label text=" -  Grass" style="-fx-font-size: 20px;"/>
+                            </HBox>
+                            <HBox>
+                                <ProgressBar progress="1" style="-fx-accent: rgb(0, 255, 0);" />
+                                <Label text=" -  Energy level" style="-fx-font-size: 20px;" alignment="CENTER"/>
+                            </HBox>
+                            <HBox fx:id="waterLegend" managed="false">
+                                <Pane style="-fx-background-color: #52aac0; " minWidth="50" minHeight="50">
+                                    <ImageView>
+                                        <fitWidth>50.0</fitWidth>
+                                        <fitHeight>50.0</fitHeight>
+                                        <Image url="@/images/water.png"/>
+                                    </ImageView>
+                                </Pane>
+                                <Label text=" -  Water field" style="-fx-font-size: 20px;"/>
+                            </HBox>
+                            <HBox>
+                                <Pane style="-fx-background-color: #D4E7C5; " minWidth="50" minHeight="50"/>
+                                <Label text=" -  Normal field" style="-fx-font-size: 20px;"/>
+                            </HBox>
+                            <HBox>
+                                <Pane style="-fx-background-color: #99BC85; " minWidth="50" minHeight="50"/>
+                                <Label text=" -  Equator field" style="-fx-font-size: 20px;"/>
+                            </HBox>
+                            <HBox>
+                                <Pane style="-fx-background-color: #e19d5c;" minWidth="50" minHeight="50"/>
+                                <Label text=" -  Tracked animal" style="-fx-font-size: 20px;"/>
+                            </HBox>
+                            <HBox>
+                                <Pane style="-fx-background-color: #ff7070;" minWidth="50" minHeight="50"/>
+                                <Label text=" -  Animals with most popular genom" style="-fx-font-size: 20px;"/>
+                            </HBox>
+                            <Separator minWidth="1000"/>
+                            <Label fx:id="trackingLabel" text="Click on animal to track" style="-fx-font-size: 25px; -fx-font-weight: bold"/>
+                            <Label fx:id="stats" style="-fx-font-size: 20px"/>
+                        </children>
+                    </VBox>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </center>
+    <bottom>
+        <VBox alignment="CENTER" minHeight="50.0">
+            <HBox alignment="CENTER" spacing="10">
+                <Button text="Start Simulation" onAction="#onSimulationButtonClicked" fx:id="simulationButton"/>
+                <Button text="Most Popular Genome" onAction="#onShowGenome" fx:id="genomeButton"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>
